@@ -936,3 +936,10 @@ fn extend_persistent_ttl(env: &Env, key: &DataKey) {
 }
 
 mod test;
+
+/// Re-entrant token fixture used by the integration tests in
+/// `tests/reentrant_token_tests.rs`. It is `pub` so the integration-test
+/// crate (which compiles this crate without `cfg(test)`) can reach it.
+/// Production callers do not need to import it; the SAC interface it
+/// mirrors is what the Group contract depends on.
+pub mod reentrant_token;
